@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>  
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Muneesh Khan — Portfolio</title>
@@ -10,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Calistoga&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0c10;
+      --bg: #0b0c10e0;
       --surface: #111217;
       --muted: #8b8d97;
       --text: #e6e6eb;
@@ -22,20 +27,26 @@
       --err: #ef4444;
       --radius: 18px;
       --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
+    }  
     @media (prefers-color-scheme: light) {
       :root { --bg: #f7f7fb; --surface: #ffffff; --text: #14151a; --muted: #5b5f6a; }
     }
-    * { box-sizing: border-box }
+    * {  margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+ }
     html, body { height: 100% }
     body {
-      margin: 0;
+       margin: 0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: radial-gradient(1200px 600px at 80% -10%, rgba(124,92,255,.18), transparent 60%),
                   radial-gradient(1000px 500px at -10% 10%, rgba(0,212,255,.12), transparent 60%),
                   var(--bg);
       color: var(--text);
       letter-spacing: .1px;
+
+
     }
     a { color: inherit; text-decoration: none }
     .container { width: min(1120px, 92vw); margin: 0 auto }
@@ -143,11 +154,11 @@
     <section class="hero">
       <div>
         <span class="tag">Java • Spring Boot • React • Medical+CS</span>
-        <h1 class="title">Hi, I'm Muneesh Khan<span style="background:linear-gradient(90deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; color:transparent">Muneesh Khan</span> — I build clean, fast web apps and love solving real-world problems.</h1>
+        <h1 class="title">Hi, I'm <span style="background:linear-gradient(90deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; color:transparent">Muneesh Khan</span> — I build clean, fast web apps and love solving real-world problems.</h1>
         <p class="subtitle">Full‑stack developer with a medical & computer science background. I design APIs with Spring Boot, craft UIs with React, and deploy reliably. Available for freelance projects and collabs.</p>
         <div class="cta">
           <!-- Replace resume.pdf with your real file -->
-          <a class="btn" href="./resume.pdf" download>⬇️ Download Résumé</a>
+          <a class="btn" href="https://muneeshkhan.github.io/New-resume/".pdf download>⬇️ Download Résumé</a>
           <a class="btn ghost" href="#projects">See Projects</a>
         </div>
         <div class="sep"></div>
@@ -160,7 +171,8 @@
       <div class="hero-card">
         <!-- Add your real photo by replacing the gradient box with an <img> tag (keep same classes) -->
         <div class="row">
-          <div class="avatar" aria-hidden></div>
+    
+          <img src="https://tse1.mm.bing.net/th/id/OIP.zgzexcFzP53kEZC8KAG3kQHaHa?r=0&w=3950&h=3950&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Muneesh Khan" class="row" height="200" width="300" >
           <div>
             <h3 style="margin:0">Available for Freelance</h3>
             <p class="muted" style="margin:.2rem 0 0">Based in India • GMT+5:30</p>
@@ -175,6 +187,12 @@
               <span class="chip">Spring Boot</span>
               <span class="chip">MySQL</span>
               <span class="chip">React</span>
+              <span class="chip">JPA/Hibernate</span>
+              <span class="chip">JWT Auth</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">Unit Testing</span>
+              <span class="chip">CI/CD</span>
+              <span class="chip">Post</span>
               <span class="chip">Docker</span>
             </div>
           </div>
@@ -182,9 +200,9 @@
             <div class="muted">Contact</div>
             <p style="margin:.5rem 0 0">
               <!-- Replace with real links -->
-              <a href="mailto:your@email.com">your@email.com</a><br>
-              <a href="https://github.com/yourgithub" target="_blank" rel="noopener">github.com/yourgithub</a><br>
-              <a href="https://www.linkedin.com/in/yourlinkedin" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="mailto:muneeshkhan7466@gmail.com">Gmail</a><br>
+              <a href="https://github.com/muneeshkhan" target="_blank" rel="noopener">Github</a><br>
+              <a href="https://www.linkedin.com/in/muneesh-khan-3b54b628b" target="_blank" rel="noopener">LinkedIn</a>
             </p>
           </div>
         </div>
@@ -224,12 +242,30 @@
           <h3>Programming</h3>
           <div class="row" style="justify-content:space-between"><span>Java</span><span class="muted">Advanced</span></div>
           <div class="bar" aria-label="Java proficiency"><i style="width:90%"></i></div>
+          <div class="row" style="justify-content:space-between"><span>DSA with Java</span><span class="muted">Advanced</span></div>
+          <div class="bar" aria-label="Java proficiency"><i style="width:90%"></i></div>
+
           <div class="row" style="justify-content:space-between; margin-top:10px"><span>Spring Boot</span><span class="muted">Advanced</span></div>
           <div class="bar"><i style="width:85%"></i></div>
           <div class="row" style="justify-content:space-between; margin-top:10px"><span>MySQL</span><span class="muted">Intermediate</span></div>
           <div class="bar"><i style="width:75%"></i></div>
           <div class="row" style="justify-content:space-between; margin-top:10px"><span>React</span><span class="muted">Intermediate</span></div>
           <div class="bar"><i style="width:70%"></i></div>
+          <div class="row" style="justify-content:space-between; margin-top:10px"><span>Python </span><span class="muted">Intermediate</span></div>
+          <div class="bar"><i style="width:70%"></i></div>
+          <div class="row" style="justify-content:space-between; margin-top:10px"><span>C++</span><span class="muted">Intermediate</span></div>
+          <div class="bar"><i style="width:70%"></i></div>
+          <div class="row" style="justify-content:space-between; margin-top:10px"><span>JS</span><span class="muted">Intermediate</span></div>
+          <div class="bar"><i style="width:70%"></i></div>
+          <div class="row" style="justify-content:space-between; margin-top:10px"><span>C</span><span class="muted">Intermediate</span></div>
+          <div class="bar"><i style="width:70%"></i></div>
+          <div class="row" style="justify-content:space-between; margin-top:10px"><span>DSA with C++</span><span class="muted">Intermediate</span></div>
+          <div class="bar"><i style="width:70%"></i></div>
+          <div class="row" style="justify-content:space-between; margin-top:10px"><span>AWS</span><span class="muted">Intermediate</span></div>
+          <div class="bar"><i style="width:70%"></i></div>
+          <div class="row" style="justify-content:space-between; margin-top:10px"><span>HTML and CSS</span><span class="muted">Intermediate</span></div>
+          <div class="bar"><i style="width:70%"></i></div>
+
         </div>
         <div class="card">
           <h3>Highlights</h3>
