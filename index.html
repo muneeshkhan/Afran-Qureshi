@@ -14,7 +14,7 @@
       --radius:12px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--dark);background:linear-gradient(180deg,#f6f8fb, #eef4ff)}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--dark);background:linear-gradient(180deg,#f6f8fb, #eef4ff);transition:all 0.3s ease}
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
 
@@ -37,7 +37,19 @@
     .mobile-toggle{display:none;background:transparent;border:0;font-size:24px;cursor:pointer}
 
     /* ----- Hero ----- */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:56px 0}
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:28px;
+      align-items:center;
+      padding:56px 0;
+      background-image: url("images/Muneesh1.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius:12px;
+      color:#0b1220;
+    }
     .hero-left h1{font-size:40px;margin:0 0 12px;line-height:1.05}
     .hero-left p.lead{margin:0 0 18px;color:var(--muted);max-width:640px}
     .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
@@ -55,6 +67,7 @@
     .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
     .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 12px 30px rgba(11,92,255,0.04);text-align:center}
     .card h3{margin:10px 0 6px}
+    .card.control{background:linear-gradient(180deg, rgba(11,92,255,0.06), rgba(59,130,246,0.02))}
 
     /* ----- Team ----- */
     section.team{padding:40px 0}
@@ -90,17 +103,91 @@
     /* ----- Small animations ----- */
     .fade-up{opacity:0;transform:translateY(10px);animation:fadeUp .6s ease forwards}
     @keyframes fadeUp{to{opacity:1;transform:none}}
+
+    /* ----- Dark Mode Toggle ----- */
+    :root {
+      --dark-bg: #0b1220;
+      --dark-card: #1a1f2b;
+      --dark-text: #f3f4f6;
+      --dark-accent: #3b82f6;
+    }
+
+    body.dark-mode {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    body.dark-mode header.site-header {
+      background: rgba(18,24,36,0.85);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    body.dark-mode .card,
+    body.dark-mode .hero-right,
+    body.dark-mode .service-item,
+    body.dark-mode .member,
+    body.dark-mode aside {
+      background: var(--dark-card);
+      color: var(--dark-text);
+    }
+
+    body.dark-mode .btn-primary {
+      background: linear-gradient(90deg, var(--dark-accent), #0b5cff);
+      color: #fff;
+    }
+
+    body.dark-mode nav.main-nav a {
+      color: #f3f4f6;
+    }
+
+    body.dark-mode nav.main-nav a:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--dark-accent);
+    }
+
+    #darkToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 55px;
+      height: 28px;
+      border-radius: 30px;
+      background: var(--accent);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 3px;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    #darkToggle::before {
+      content: '';
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fff;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode #darkToggle::before {
+      transform: translateX(27px);
+      background: #111827;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Dark Mode Toggle Button -->
+  <div id="darkToggle" aria-label="Toggle dark mode"></div>
+
   <!-- HEADER -->
   <header class="site-header" role="banner">
-    <div class="container nav-row">
+    < class="container nav-row">
       <a class="brand" href="#" aria-label="IATPL">
         <img src="https://via.placeholder.com/140x140.png?text=IATPL" alt="IATPL logo" loading="lazy">
         <div>
-          <div style="font-weight:700;color:#0b1220">Yaseen Khan</div>
+          <div style="font-weight:700;color:#0b1220">ASRS</div>
           <div class="muted" style="font-size:13px">Technologies Pvt. Ltd</div>
         </div>
       </a>
@@ -113,18 +200,13 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <div class="row" style="gap:8px">
-        <a class="btn btn-primary" href="tel:+917417096580">Call Us: +91 7417096580</a>
-        <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="mainNav">☰</button>
-      </div>
-    </div>
   </header>
 
   <!-- HERO -->
   <main>
     <section class="container hero" aria-labelledby="hero-heading">
       <div class="hero-left">
-        <p class="muted">ASRS INSTALLATION SERVICE — Pune, Maharashtra</p>
+        <p class="muted">ASRS INSTALLATION SERVICE — Jaipur, Rajasthan</p>
         <h1 id="hero-heading">Broad Vision • Honest Service • Great Value</h1>
         <p class="lead muted">We design, install and maintain automated material handling solutions — ASRS, conveyors, cranes, palletizers and turnkey automation for manufacturing & distribution.</p>
 
@@ -149,11 +231,17 @@
       </aside>
     </section>
 
+    <div class="row" style="gap:8px">
+        <a class="btn btn-primary" href="tel:+917417096580">Call Us: +91 7417096580</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="mainNav">☰</button>
+      </div>
+    </div>
+
     <!-- SERVICES -->
     <section id="services" class="services container" aria-labelledby="svc-h">
       <h2 id="svc-h" style="text-align:center">Our Value Added Services</h2>
       <div class="cards" style="margin-top:18px">
-        <div class="card fade-up"><h3>Control Technology</h3><p class="muted">PLC / SCADA / HMI integration.</p></div>
+        <div class="card fade-up control"><h3>Control Technology</h3><p class="muted">PLC / SCADA / HMI integration.</p></div>
         <div class="card fade-up"><h3>Commissioning</h3><p class="muted">System bring-up & testing.</p></div>
         <div class="card fade-up"><h3>Annual Maintenance</h3><p class="muted">AMC & tailored support contracts.</p></div>
         <div class="card fade-up"><h3>Structural Works</h3><p class="muted">Racks & installations.</p></div>
@@ -166,7 +254,7 @@
     <section id="about" class="team container" aria-labelledby="team-h">
       <h2 id="team-h" style="text-align:center">Our Team</h2>
       <div class="team-grid" style="margin-top:18px">
-        <div class="member fade-up"><img src="https://via.placeholder.com/400x300.png?text=Debajit" alt="Debajit - Head Projects"><strong>Debajit</strong><div class="muted">Head - Projects</div></div>
+        <div class="member fade-up"><img src="Muneesh1.jpg" alt="Debajit - Head Projects"><strong>Debajit</strong><div class="muted">Head - Projects</div></div>
         <div class="member fade-up"><img src="https://via.placeholder.com/400x300.png?text=Manager" alt="Manager - Business Development"><strong>Manager</strong><div class="muted">Business Development</div></div>
         <div class="member fade-up"><img src="https://via.placeholder.com/400x300.png?text=Mech+Engineer" alt="Mechanical Lead"><strong>Engineer</strong><div class="muted">Mechanical Lead</div></div>
         <div class="member fade-up"><img src="https://via.placeholder.com/400x300.png?text=Elec+Engineer" alt="Electrical Lead"><strong>Engineer</strong><div class="muted">Electrical Lead</div></div>
@@ -176,6 +264,10 @@
     <!-- CONTACT -->
     <section id="contact" class="contact container" aria-labelledby="contact-h">
       <h2 id="contact-h" style="text-align:center">Get in Touch</h2>
+      <p id="contact-h" style="text-align:center">Add a couple of lines that tell users how easily they can get in touch with you.<br> People prefer services where they can contact providers right away.
+
+
+</p>
       <div class="contact-grid" style="margin-top:18px">
         <form id="contactForm" novalidate>
           <div class="form-control"><label for="fname">Name*</label><input id="fname" name="fname" required placeholder="Your Name"></div>
@@ -191,7 +283,7 @@
           <h3>Contact Info</h3>
           <p class="muted">Call Us: <strong>+91 7417096580</strong></p>
           <p class="muted">Email: <strong>muneeshkhan8466@gmail.com</strong></p>
-          <p class="muted">Location:<br><strong>Aligarh, Uttar Pradesh</strong></p>
+          <p class="muted">Location:<br><strong>Jaipur, Rajasthan</strong></p>
         </aside>
       </div>
     </section>
@@ -200,9 +292,11 @@
   <!-- FOOTER -->
   <footer role="contentinfo">
     <div class="container footer-grid">
-      <div><h3>IATPL</h3><p class="muted">Partner in automation services.</p></div>
+      <div><h3>ASRSL</h3><p class="muted">Partner in automation services.</p></div>
       <div><h4 style="margin:0 0 8px;color:#fff">Quick Links</h4><div class="muted"><a href="#services">Services</a><br><a href="#contact">Contact</a><br><a href="#about">About us</a></div></div>
-      <div><h4 style="margin:0 0 8px;color:#fff">Contact</h4><p class="muted">T: +91 7417096580</p><p class="muted">E: muneeshkhan8466@gmail.com</p></div>
+      <div><h4 style="margin:0 0 8px;color:#fff">Contact</h4><p class="muted">T: +91 7417096580</p><p class="muted">E: muneeshkhan8466@gmail.com</p><p class="muted">ASRS Technologies Pvt. Ltd
+
+</p></div>
     </div>
   </footer>
 
@@ -232,6 +326,23 @@
       }
       out.textContent = '✅ Message sent (demo).'; out.style.color = 'green'; this.reset();
     });
+
+    // Dark mode toggle
+    const darkToggle = document.getElementById('darkToggle');
+    darkToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if(document.body.classList.contains('dark-mode')){
+        localStorage.setItem('darkMode','enabled');
+      } else {
+        localStorage.setItem('darkMode','disabled');
+      }
+    });
+
+    // Load dark mode preference
+    if(localStorage.getItem('darkMode') === 'enabled'){
+      document.body.classList.add('dark-mode');
+    }
   </script>
 </body>
 </html>
+
