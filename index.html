@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="A K ENTERPRISES" />
   <title>A K ENTERPRISES</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     /* ----- Root / Base ----- */
     
@@ -751,22 +752,24 @@ Tell people a little more to attract. You can mention some contact details as sh
 
 
 </p>
+<div class="form-container">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
 
-     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
 
-      <div class="contact-grid" style="margin-top:18px">
-        <form action="" method="post">
-          <div class="form-control"><label for="name">Name*</label><input id="name" name="name" required placeholder="Your Name"></div>
-          <div class="form-control"><label for="email">Email*</label><input id="email" type="email" name="email" required placeholder="Enter your email"></div>
-         <!--<div class="form-control"><label for="phone">Phone*</label><input id="phone" name="phone" required placeholder="Enter your phone number"></div> -->
-          <div class="form-control"><label for="message">Message*</label><textarea id="message" name="message" required placeholder="Describe your project"></textarea></div>
-          <div style="display:flex;gap:12px;align-items:center">
-            <button class="btn btn-primary" type="submit">Send</button>
-            <div id="formMsg" class="muted"></div>
-          </div>
-        </form>
-      </div>
-    </section>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Send Message</button>
+      <p id="formMessage"></p>
+    </form>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
   </main>
 
   <!-- FOOTER -->
@@ -945,6 +948,36 @@ form.addEventListener('submit', async (e) => {
 }); */
 
 //contactform
+
+  // Initialize EmailJS with your public key
+ /* emailjs.init("NGtHSpNXkIBeK_Q84");
+    emailjs.init("NGtHSpNXkIBeK_Q84");
+
+    // Menu toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector("#nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Contact Form Submission
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const serviceID = "service_vxgzd5h";
+      const templateID = "template_7ow2lta";
+
+      emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+          alert("✅ Message sent successfully!");
+          this.reset();
+        })
+        .catch((err) => {
+          alert("❌ Message failed: " + JSON.stringify(err));
+        });
+    }); */
+
 
 (function () {
   emailjs.init("NGtHSpNXkIBeK_Q84"); // Replace with your EmailJS public key
