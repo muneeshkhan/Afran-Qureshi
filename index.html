@@ -979,39 +979,49 @@ form.addEventListener('submit', async (e) => {
     }); */
 
 
-(function () {
-  emailjs.init("NGtHSpNXkIBeK_Q84"); // Replace with your EmailJS public key
-})();
+(function() {
+      emailjs.init("NGtHSpNXkIBeK_Q84"); // 🔑 Replace with your Public Key
+    })();
 
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
-  const formMessage = document.getElementById("formMessage");
+      const from_name = document.getElementById("from_name").value.trim();
+      const from_email = document.getElementById("from_email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const status = document.getElementById("status");
 
-  const templateParams = {
-    name: name,
-    email: email,
-    message: message,
-    time: new Date().toLocaleString()
-  };
+      if (!from_name || !from_email || !message) {
+        status.style.color = "red";
+        status.textContent = "Please fill out all fields!";
+        return;
+      }
 
-  emailjs.send("service_vxgzd5h", "template_7ow2lta", templateParams)
-    .then(() => {
-      formMessage.style.color = "green";
-      formMessage.textContent = "Message sent successfully!";
-      document.getElementById("contactForm").reset();
-    })
-    .catch((error) => {
-      formMessage.style.color = "red";
-      formMessage.textContent = "Failed to send message. Please try again.";
-      console.error("EmailJS error:", error);
-    });
-});
+      // Show loading message
+      status.style.color = "blue";
+      status.textContent = "Sending message...";
 
+      const serviceID = "service_vxgzd5h";   // 🟢 Replace with your Service ID
+      const templateID = "template_7ow2lta"; // 🟢 Replace with your Template ID
 
+      const templateParams = {
+        from_name: from_name,
+        from_email: from_email,
+        message: message,
+      };
+
+      emailjs.send(serviceID, templateID, templateParams)
+        .then(() => {
+          status.style.color = "green";
+          status.textContent = "Message sent successfully!";
+          document.getElementById("contactForm").reset();
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          status.style.color = "red";
+          status.textContent = "Failed to send message. Please try again.";
+        });
+    });
   </script>
 </body>
 </html>
