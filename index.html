@@ -753,23 +753,7 @@ Tell people a little more to attract. You can mention some contact details as sh
 
 
 </p>
-<div class="form-container">
-    <h2>Contact Us</h2>
-    <form id="contactForm">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
-
-      <button type="submit">Send Message</button>
-      <p id="formMessage"></p>
-    </form>
-  </div>
-<script type="text/javascript" src="https://cdn .jsdelivr.net/npm/@emailjs/browser@3/dist /email.min.js"></script>
+<a href="contact.html">Contact</a>
 
   </main>
 
@@ -979,50 +963,7 @@ form.addEventListener('submit', async (e) => {
         });
     }); */
 
-
-(function() {
-      emailjs.init("NGtHSpNXkIBeK_Q84"); // 🔑 Replace with your Public Key
-    })();
-
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const from_name = document.getElementById("from_name").value.trim();
-      const from_email = document.getElementById("from_email").value.trim();
-      const message = document.getElementById("message").value.trim();
-      const status = document.getElementById("status");
-
-      if (!from_name || !from_email || !message) {
-        status.style.color = "red";
-        status.textContent = "Please fill out all fields!";
-        return;
-      }
-
-      // Show loading message
-      status.style.color = "blue";
-      status.textContent = "Sending message...";
-
-      const serviceID = "service_vxgzd5h";   // 🟢 Replace with your Service ID
-      const templateID = "template_7ow2lta"; // 🟢 Replace with your Template ID
-
-      const templateParams = {
-        from_name: from_name,
-        from_email: from_email,
-        message: message,
-      };
-
-      emailjs.send(serviceID, templateID, templateParams)
-        .then(() => {
-          status.style.color = "green";
-          status.textContent = "Message sent successfully!";
-          document.getElementById("contactForm").reset();
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          status.style.color = "red";
-          status.textContent = "Failed to send message. Please try again.";
-        });
-    });
+  
   </script>
 </body>
 </html>
